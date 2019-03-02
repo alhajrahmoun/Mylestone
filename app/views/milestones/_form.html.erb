@@ -1,0 +1,79 @@
+<style>
+  .form-signin {
+    max-width: 580px;
+    padding: 15px;
+    margin: 0 auto;
+  }
+  .form-signin .form-signin-heading,
+  .form-signin .checkbox {
+    margin-bottom: 10px;
+  }
+  .form-signin .checkbox {
+    font-weight: normal;
+  }
+  .form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+  }
+  .form-signin .form-control:focus {
+    z-index: 2;
+  }
+  .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+</style>
+
+<%= form_with(model: milestone, local: true, html: {class: "form-signin" }) do |form| %>
+  <% if milestone.errors.any? %>
+    <div id="error_explanation">
+      <h2 style="color: white"><%= pluralize(milestone.errors.count, "error") %> prohibited this milestone from being saved:</h2>
+
+      <ul>
+      <% milestone.errors.full_messages.each do |message| %>
+        <li style="color: white"><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control', placeholder: 'Title', required: true %>
+  </div>
+
+  <div class="field">
+    <div style="position: relative">
+      <%= form.label :date %>
+      <%= form.text_field :date, :class => 'form-control', id: 'datetimepicker4', placeholder: 'Date', required: true %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :story %>
+    <%= form.text_area :story, class: 'form-control', placeholder: 'Story', rows: 10, cols: 150, required: true %>
+  </div>
+  <br>
+  <div class="actions">
+    <%= form.submit "Create Milestone", class: 'btn btn-lg btn-primary btn-block' %>
+  </div>
+<% end %>
+<script>
+    $(function () {
+        $('#datetimepicker4').datetimepicker({
+            format: 'L',
+            format: 'YYYY-MM-DD'
+        });
+    });
+</script>

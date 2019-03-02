@@ -1,0 +1,29 @@
+<div class="row text-center">
+  <h1 class="heading-title">Latest Milestones</h1>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="main-timeline">
+      <% @milestones.each do |milestone| %>
+        <div class="timeline">
+          <div class="timeline-content">
+                                  <span class="date">
+                                      <span class="day"><%= milestone.date.day %><sup>th</sup></span>
+                                      <span class="month"><%= milestone.date.strftime("%B")[0..2] %></span>
+                                      <span class="year"><%= milestone.date.year %></span>
+                                  </span>
+            <h2 class="title"><%= milestone.title %> | by: <%= milestone.user.username %>
+              <% if user_signed_in? && milestone.user_id.eql?(current_user.id) %>
+                <%= link_to milestone_path(milestone), method: :delete, data: {confirm: 'Are you sure want to delete this milestone?'} do %>
+                  <span class="glyphicon glyphicon-remove"></span></h2>
+                <% end %>
+                <% else %>
+                </h2>
+              <% end %>
+            <p class="description"><%= milestone.story %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

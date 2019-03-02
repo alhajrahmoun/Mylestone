@@ -1,0 +1,27 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "milestones";
+@import 'bootstrap-datetimepicker';
+html, body { margin: 0; padding: 0; height: 100%; background: #25303b;}
+.footer {
+  position: relative;
+  margin-top: -20px; /* negative value of footer height */
+  height: 20px;
+  clear:both;
+  padding-top:20px;
+}
+.navbar-default .navbar-brand {
+  color: white;
+}
+
+.navbar-default a:hover.navbar-brand {
+  color: #02a2dd;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: #02a2dd;
+}
