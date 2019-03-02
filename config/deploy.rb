@@ -5,7 +5,7 @@ set :application, "mylestone"
 set :repo_url, "git@github.com:mhdrahmoun/Mylestone.git"
 
 set :deploy_to, '/home/mylestone/apps/mylestone'
-
+append :linked_files, "config/master.key"
 set :keep_releases, 2
 
 namespace :deploy do
