@@ -6,6 +6,7 @@ set :repo_url, "git@github.com:mhdrahmoun/Mylestone.git"
 
 set :deploy_to, '/home/mylestone/apps/mylestone'
 append :linked_files, "config/master.key"
+append :linked_files, ".env.production"
 set :keep_releases, 2
 
 namespace :deploy do
