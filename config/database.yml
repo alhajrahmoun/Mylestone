@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: Mylestone_production
-  username: Mylestone
+  username: mylestone
   password: <%= ENV['MYLESTON_DATABASE_PASSWORD'] %>
