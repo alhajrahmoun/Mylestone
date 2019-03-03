@@ -137,11 +137,11 @@ height: 90%}
   background: #eab715;
 }
 
-@media only screen and (max-width: 990px){
+@media only screen and (min-device-width : 310px) and (max-device-width : 480px){
   .main-timeline{ width: 100%; }
 }
 
-@media only screen and (max-width: 767px){
+@media only screen and (min-device-width : 310px) and (max-device-width : 480px){
   .main-timeline:before,
   .main-timeline .date{
     left: 6%;
@@ -155,7 +155,7 @@ height: 90%}
   }
 }
 
-@media only screen and (max-width: 480px){
+@media only screen and (min-device-width : 310px) and (max-device-width : 480px){
   .main-timeline:before,
   .main-timeline .date{
     left: 12%;
