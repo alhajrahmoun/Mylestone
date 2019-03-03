@@ -1,14 +1,19 @@
 class MilestonesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
-  before_action :set_milestone, only: [:show, :edit, :update, :destroy]
+  before_action :set_milestone, only: [:edit, :update, :destroy]
 
   # GET /milestones
   def index
-    @milestones = Milestone.all.includes(:user).order(date: :DESC)
+    if params['filter'].eql?('personal') && user_signed_in?
+      @milestones = current_user.milestones.includes(:user).order(date: :DESC)
+    else
+      @milestones = Milestone.all.includes(:user).order(date: :DESC)
+    end
   end
 
   # GET /milestones/1
   def show
+    redirect_to root_path
   end
 
   # GET /milestones/new
