@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_073446) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status"
+    t.integer "status", default: 0
     t.index ["user_id"], name: "index_milestones_on_user_id"
   end
 
