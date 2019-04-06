@@ -71,8 +71,10 @@
   <br>
 
   <div class="field">
-    <%= form.check_box :status, {}, "secret", "open" %>
-    <%= form.label 'Make it secret', class: 'checkbox-text' %>
+    <%= form.label :status, class: 'checkbox-text' do %>
+      <%= form.check_box :status, {}, "secret", "open" %>
+      Make it secret
+    <% end %>
   </div>
 
   <br>
