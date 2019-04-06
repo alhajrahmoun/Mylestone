@@ -7,7 +7,7 @@ class MilestonesController < ApplicationController
     if params['filter'].eql?('personal') && user_signed_in?
       @milestones = current_user.milestones.includes(:user).order(date: :DESC)
     else
-      @milestones = Milestone.all.includes(:user).order(date: :DESC)
+      @milestones = Milestone.open.includes(:user).order(date: :DESC)
     end
   end
 
@@ -59,6 +59,6 @@ class MilestonesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def milestone_params
-      params.require(:milestone).permit(:title, :story, :date)
+      params.require(:milestone).permit(:title, :story, :date, :status)
     end
 end

@@ -1,4 +1,7 @@
 <style>
+  .checkbox-text {
+    color: white;
+  }
   .form-signin {
     max-width: 580px;
     padding: 15px;
@@ -64,7 +67,16 @@
     <%= form.label :story %>
     <%= form.text_area :story, class: 'form-control', placeholder: 'Story', rows: 10, cols: 150, required: true %>
   </div>
+
   <br>
+
+  <div class="field">
+    <%= form.check_box :status, {}, "secret", "open" %>
+    <%= form.label 'Make it secret', class: 'checkbox-text' %>
+  </div>
+
+  <br>
+
   <div class="actions">
     <%= form.submit "Create Milestone", class: 'btn btn-lg btn-primary btn-block' %>
   </div>
