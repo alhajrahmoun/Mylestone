@@ -5,15 +5,15 @@ class MilestonesController < ApplicationController
   # GET /milestones
   def index
     if params['filter'].eql?('personal') && user_signed_in?
-      @milestones = current_user.milestones.includes(:user).order(date: :DESC)
+      @milestones = current_user.milestones.includes(:user).order(date: :DESC, created_at: :DESC)
     else
-      @milestones = Milestone.open.includes(:user).order(date: :DESC)
+      @milestones = Milestone.open.includes(:user).order(date: :DESC, created_at: :DESC)
     end
   end
 
   # GET /milestones/1
   def show
-    redirect_to root_path
+    redirect_to milestones_path(filter: 'personal')
   end
 
   # GET /milestones/new
@@ -30,7 +30,7 @@ class MilestonesController < ApplicationController
     @milestone = current_user.milestones.new(milestone_params)
 
     if @milestone.save
-      redirect_to root_path
+      redirect_to milestones_path(filter: 'personal')
     else
       render :new
     end
@@ -48,7 +48,7 @@ class MilestonesController < ApplicationController
   # DELETE /milestones/1
   def destroy
     @milestone.destroy
-    redirect_to milestones_url, notice: 'Milestone was successfully destroyed.'
+    redirect_to milestones_path(filter: 'personal'), notice: 'Milestone was successfully destroyed.'
   end
 
   private

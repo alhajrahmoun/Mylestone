@@ -1,14 +1,14 @@
 module Api
-  class MilestonesController < ApiController
+  class MilestonesController < ApplicationController
     before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
     before_action :set_milestone, only: [:edit, :update, :destroy]
 
     # GET /milestones
     def index
       if params['filter'].eql?('personal') && user_signed_in?
-        @milestones = current_user.milestones.includes(:user).order(date: :DESC)
+        @milestones = current_user.milestones.includes(:user).order(date: :DESC, created_at: :DESC)
       else
-        @milestones = Milestone.open.includes(:user).order(date: :DESC)
+        @milestones = Milestone.open.includes(:user).order(date: :DESC, created_at: :DESC)
       end
     end
 
