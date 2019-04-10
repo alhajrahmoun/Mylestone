@@ -15,7 +15,7 @@ module Api
     def create
       @milestone = current_user.milestones.new(milestone_params)
 
-      if @milestone.save
+      if @milestone.save!
         render json: {message: "Your milestone created successfully."}
       else
         render json: {message: "something went wrong, please check your input"}
