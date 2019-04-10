@@ -1,55 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Myleston</title>
+  <title>Mylestone</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Save you milestones and share it with the world!">
+  <meta name="author" content="Mohamad Alhaj Rahmoun">
+  <meta name="author" content="Mohammed Mokresh">
+
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
+  <link href="/assets/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Plugin CSS -->
+  <link rel="stylesheet" href="/device-mockups/device-mockups.min.css">
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
 </head>
 
-<body>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to "Mylestone", root_path, class: 'navbar-brand' %>
-    </div>
+<body id="page-top">
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse">
-        <ul class="nav navbar-nav">
+  <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+    <div class="container">
+      <% if user_signed_in? %>
+        <%= link_to "Mylestone", milestones_path, class: 'navbar-brand js-scroll-trigger' %>
+      <% else %>
+        <%= link_to "Mylestone", root_path, class: 'navbar-brand js-scroll-trigger' %>
+      <% end %>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <%= link_to "Discover Milestones", milestones_path, class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
+          </li>
           <% if user_signed_in? %>
-            <li><%= link_to 'New Milestone', new_milestone_path %></li>
-          <% end %>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
-            <li><%= link_to "My Milestones", milestones_path(filter: 'personal') %></li>
-            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <%= link_to "My Milestones", milestones_path(filter: 'personal'), class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
+            </li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <%= link_to "+New Milestone", new_milestone_path, class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
+            </li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
+            </li>
           <% else %>
-            <li><%= link_to "Sign in", new_user_session_path %></li>
-            <li><%= link_to "Sign up", new_user_registration_path %></li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <%= link_to "Sign in", new_user_session_path, class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
+            </li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <%= link_to "Sign up", new_user_registration_path, class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %>
+            </li>
           <% end %>
         </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-  <div class="container">
-    <%= yield %>
+      </div>
+    </div>
+  </nav>
+
+  <% if current_page?('/') %>
+    <%= render 'layouts/landing'%>
+  <% else %>
+    <section class="bg-primary">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </section>
+  <% end %>
+
+  <div class="copyright py-4 text-center text-white">
+    <div class="container">
+      <div class="badges">
+        <a class="badge-link-footer" href="#"><img src="/assets/google-play-badge.svg"></a>
+      </div>
+      <small>A simple WebApp by <a style="color: #18bc9c;" target="_blank" href="https://github.com/mhdrahmoun">mhdrahmoun </a> | An Android App by <a style="color: #18bc9c;" target="_blank" href="https://github.com/MohammedMokresh">Mohammed Mokresh </a> | contact us: admin@mylestone.life </small>
+    </div>
   </div>
+
+<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+  <div class="scroll-to-top d-lg-none position-fixed ">
+    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+  <script src="/assets/bootstrap.bundle.min.js"></script>
 </body>
-<footer class="footer">
-  <div class="container">
-    <p class="text-muted" style="font-size: 18px">A simple WebApp by <a href="https://github.com/mhdrahmoun">mhdrahmoun </a> | contact us: admin@mylestone.life </p>
-  </div>
-</footer>
 </html>
 
