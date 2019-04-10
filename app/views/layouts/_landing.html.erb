@@ -6,8 +6,8 @@
 
           <h1 class="mb-5">Save your milestones and share them with the world!</h1>
           <div class="badges">
-            <a class="badge-link" href="#"><img src="/assets/google-play-badge.svg" alt=""></a>
-            <a class="badge-link"><img src="/assets/app-store-badge.svg" alt="coming soon" style="opacity: 0.1;"></a>
+            <a class="badge-link" href="#"><%= image_tag 'google-play-badge.svg' %></a>
+            <a class="badge-link"><%= image_tag 'app-store-badge.svg', style: 'opacity: 0.1;' %></a>
           </div>
         </div>
       </div>
@@ -17,7 +17,7 @@
               <div class="device">
                 <div class="screen">
                   <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                  <img src="/assets/demo-screen-1.jpg" class="img-fluid" alt="">
+                  <%= image_tag 'app.jpg', class: 'img-fluid' %>
                 </div>
               </div>
             </div>
