@@ -5,8 +5,8 @@
 
 ## Requirements
 
-- ruby 2.6.0
-- rails 5.2.3
+- ruby 2.6.5
+- rails 6.0.0
 - postgreSQL
 - Bootstrap
 - Font Awesome
