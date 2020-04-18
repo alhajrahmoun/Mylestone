@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.11.0"
+lock "~> 3.13.0"
 
 set :application, "mylestone"
 set :repo_url, "git@github.com:mhdrahmoun/Mylestone.git"
@@ -10,7 +10,7 @@ append :linked_files, ".env.production"
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
 
 set :keep_releases, 2
-set :puma_threads, [1, 8]
+set :puma_threads, [1, 4]
 set :puma_workers, 1
 set :puma_conf, "#{shared_path}/puma.rb"
 set :puma_bind, "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock"    #accept array for multi-bind
