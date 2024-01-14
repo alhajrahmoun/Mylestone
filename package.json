@@ -1,10 +1,17 @@
 {
-  "name": "Myleston",
-  "private": true,
+  "name": "app",
+  "private": "true",
   "dependencies": {
-    "@rails/webpacker": "^4.0.7"
+    "esbuild": "^0.19.11",
+    "bootstrap": "4.3.1",
+    "@rails/ujs": "^6.1.7",
+    "@rails/activestorage": "^6.1.4",
+    "jquery": "^3.7.1",
+    "popper.js": "^1.16.1",
+    "moment": "^2.29.1",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47"
   },
-  "devDependencies": {
-    "webpack-dev-server": "^3.8.1"
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets"
   }
 }

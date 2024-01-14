@@ -14,7 +14,7 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
-gem "webpacker"
+gem 'jsbundling-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
@@ -40,9 +40,7 @@ gem 'devise_token_auth'
 gem 'font-awesome-sass', '~> 5.8.1'
 gem 'jquery-rails'
 gem 'momentjs-rails', '>= 2.9.0'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
-gem "skylight"
 gem 'trestle'
 gem 'trestle-auth'
 # Reduces boot times through caching; required in config/boot.rb
